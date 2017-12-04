@@ -16,6 +16,8 @@ namespace MDP.WebApi
         {
             routeManager.MapHttpRoute("MDP", "default", "{controller}/{action}/{id}", new { id = RouteParameter.Optional }, new[] { "MDP.WebApi" });
 
+
+            //Test
             //routeManager.MapHttpRoute("AngularModule", "default1", "{controller}/{action}/{id}", new { id = "" }, new[] { "AngularModule.WebApi" });
             //routeManager.MapHttpRoute("AngularModule", "default2", "{controller}/{action}", new { id = RouteParameter.Optional }, new[] { "AngularModule.WebApi" });
             //routeManager.MapHttpRoute("AngularModule", "default3", "{controller}/{action}/{id}/{name}", new { id = "", name = "" }, new[] { "AngularModule.WebApi" });
