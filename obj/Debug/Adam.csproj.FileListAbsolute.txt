@@ -1,0 +1,6 @@
+E:\Development\DNN\www\DesktopModules\Adam\obj\Debug\Adam.csprojResolveAssemblyReference.cache
+E:\Development\DNN\www\DesktopModules\Adam\obj\Debug\Adam.csproj.CoreCompileInputs.cache
+E:\Development\DNN\www\bin\Adam.dll
+E:\Development\DNN\www\bin\Adam.pdb
+E:\Development\DNN\www\DesktopModules\Adam\obj\Debug\Adam.dll
+E:\Development\DNN\www\DesktopModules\Adam\obj\Debug\Adam.pdb
