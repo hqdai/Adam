@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotNetNuke.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,29 @@ namespace MDP.Controller
             }
         }
 
+        public string Adam_Assets_Add()
+        {
+            return string;
+        }
 
+        public int AddItem(ItemInfo objItemInfo)
+        {
+            int ItemID = 0;
+            string storename = "Adam_Assets_Add";
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                ItemID = ctx.ExecuteScalar<int>(System.Data.CommandType.StoredProcedure, storename, 
+                    objItemInfo.Title, 
+                    objItemInfo.Description, 
+                    objItemInfo.AssignedUserId, 
+                    objItemInfo.ModuleId, 
+                    objItemInfo.Sort, 
+                    objItemInfo.CreatedOnDate, 
+                    objItemInfo.CreatedByUserId, 
+                    objItemInfo.LastModifiedOnDate, 
+                    objItemInfo.LastModifiedByUserId);
+            }
+            return ItemID;
+        }
     }
 }
