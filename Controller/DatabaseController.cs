@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Adam.Model;
 
-namespace MDP.Controller
+namespace Adam.Controller
 {
     class DatabaseController
     {
@@ -30,29 +31,22 @@ namespace MDP.Controller
             }
         }
 
-        public string Adam_Assets_Add()
+        public void Adam_Assets_Add(AssetInfo Info)
         {
-            return string;
-        }
-
-        public int AddItem(ItemInfo objItemInfo)
-        {
-            int ItemID = 0;
             string storename = "Adam_Assets_Add";
             using (IDataContext ctx = DataContext.Instance())
             {
-                ItemID = ctx.ExecuteScalar<int>(System.Data.CommandType.StoredProcedure, storename, 
-                    objItemInfo.Title, 
-                    objItemInfo.Description, 
-                    objItemInfo.AssignedUserId, 
-                    objItemInfo.ModuleId, 
-                    objItemInfo.Sort, 
-                    objItemInfo.CreatedOnDate, 
-                    objItemInfo.CreatedByUserId, 
-                    objItemInfo.LastModifiedOnDate, 
-                    objItemInfo.LastModifiedByUserId);
+                ctx.Execute(System.Data.CommandType.StoredProcedure, storename,
+                    Info.AssetID,
+                    Info.ItemID,
+                    Info.AssetType,
+                    Info.ItemType,
+                    Info.IsDeleted,
+                    Info.DateAdded,
+                    Info.DateModified,
+                    Info.CreatedBy,
+                    Info.ModifiedBy);
             }
-            return ItemID;
         }
     }
 }
