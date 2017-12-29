@@ -25,14 +25,13 @@ namespace Adam.WebApi
 
 
         [HttpPost]
-        [ActionName("UploadFile")] // /API/item/new
+        [ActionName("UploadFile")] // /API/Asset/new
         [AllowAnonymous]
         public HttpResponseMessage AddItem()
         {
             string returnID = "a";
             try
             {
-                int i = 0;
                 var httpRequest = HttpContext.Current.Request;
                 if (httpRequest.Files.Count < 1)
                 {
@@ -57,30 +56,16 @@ namespace Adam.WebApi
         }
 
         [HttpPost]
-        [ActionName("New")] // /API/item/new
+        [ActionName("New")] // /API/Asset/new
         [AllowAnonymous]
         public HttpResponseMessage AddItem(AssetInfo item)
         {
             try
             {
-                var httpRequest = HttpContext.Current.Request;
-                ////if (httpRequest.Files.Count < 1)
-                ////{
-                ////    return Request.CreateResponse(HttpStatusCode.BadRequest);
-                ////}
-
-                foreach (string file in httpRequest.Files)
-                {
-                    var postedFile = httpRequest.Files[file];
-                    var filePath = HttpContext.Current.Server.MapPath("~/Portals/UploadedAssets/" + postedFile.FileName);
-                    postedFile.SaveAs(filePath);
-                    // NOTE: To store in memory use postedFile.InputStream
-                }
-
-                //item.CreatedBy = UserInfo.UserID;
-                //item.DateAdded = DateTime.Now;
-                //item.ModifiedBy = UserInfo.UserID;
-                //item.DateModified = DateTime.Now;
+                item.CreatedBy = UserInfo.UserID;
+                item.DateAdded = DateTime.Now;
+                item.ModifiedBy = UserInfo.UserID;
+                item.DateModified = DateTime.Now;
                 DatabaseController.Instance.Adam_Assets_Add(item);
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
